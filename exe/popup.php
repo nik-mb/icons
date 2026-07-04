@@ -23,7 +23,16 @@ $JSINFO['id']        = '';
 $JSINFO['namespace'] = '';
 
 $tmp = array();
-trigger_event('MEDIAMANAGER_STARTED', $tmp);
+// FIX: replace obsolete trigger_event()
+// -------------
+// trigger_event('MEDIAMANAGER_STARTED', $tmp);
+use dokuwiki\Extension\Event;
+if (class_exists('Event')) {
+    Event::createAndTrigger('MEDIAMANAGER_STARTED', $tmp);
+}
+// -------------
+// end FIX
+// If the popup opens but is empty, go to "configuration settings" and uncheck "defer_js"
 session_write_close();  //close session
 
 
