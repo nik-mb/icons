@@ -75,8 +75,12 @@ class syntax_plugin_icons_icon extends DokuWiki_Syntax_Plugin {
       $match = $title;
 
       $match = substr($match, 2, -2); // strip markup
-      list($match, $title) = explode('|', $match);
-
+// FIX start: avoid array warning
+//    list($match, $title) = explode('|', $match);
+      $parts20260704 = explode('|', $match, 2); // max. 2 parts
+      $match = $parts20260704[0];
+      $title = $parts20260704[1] ?? $match;
+//FIX end
       if (isset($title2)) $title = rtrim($title2, '}');
 
     }
