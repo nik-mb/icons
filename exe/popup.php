@@ -48,8 +48,10 @@ $use_glyphicons            = false;
 # Load Bootstrap3 Template assets
 if ($conf['template'] == 'bootstrap3') {
 
-  include_once(DOKU_INC.'lib/tpl/bootstrap3/tpl_functions.php');
-  include_once(DOKU_INC.'lib/tpl/bootstrap3/tpl_global.php');
+// FIX start: deprecated 'include_once()'
+//  include_once(DOKU_INC.'lib/tpl/bootstrap3/tpl_functions.php');
+//  include_once(DOKU_INC.'lib/tpl/bootstrap3/tpl_global.php');
+// FIX end
 
   # Glyphicons is bundled into Bootstrap 3.x
   $use_glyphicons = true;
